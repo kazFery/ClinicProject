@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .element {
+            @include clearfix;
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center">
+<div class="container float-end pt-4" th:fragment="list_availableDoctors">
+    <table id="available-table" class="table table-bordered table-striped" >
+        <thead>
+        <tr>
+            <th> time </th>
+            <th> Doctor's FirstName</th>
+            <th> Doctor's lastName </th>
+            <th> Specilization </th>
+            <th> Action </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="availableDoctor  : ${availableDoctors}">
+            <td th:text="${availableDoctor.slot.getSlotName()}"></td>
+            <td th:text="${availableDoctor.doctor.getFirstname()}"></td>
+            <td th:text="${availableDoctor.doctor.getLastname()}"></td>
+            <td th:text="${availableDoctor.doctor.getSpecial()}"></td>
+            <td>
+                <a th:href="@{/reseveAppointment}" class="btn btn-info">Reserv</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/images/calendar.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<header>Header</header>
+<nav></nav>
+<main>
+    <div class="month">
+        <ul>
+            <li class="prev">&#10094;</li>
+            <li class="next">&#10095;</li>
+            <li>January<br><span style="font-size:18px">2023</span></li>
+        </ul>
+    </div>
+    <ul class="weekdays">
+        <li>Su</li>
+        <li>Mo</li>
+        <li>Tu</li>
+        <li>We</li>
+        <li>Th</li>
+        <li>Fr</li>
+        <li>Sa</li>
+    </ul>
+    <ul class="days">
+        <li><button class="makeNotBold demo">1</button></li><!-- only this one becomes bold -->
+        <li><button class="makeNotBold demo">2</button></li>
+        <li><button class="makeNotBold demo">3</button></li>
+        <li><button class="makeNotBold demo">4</button></li>
+        <li><button class="makeNotBold demo">5</button></li>
+        <li><button class="makeNotBold demo">6</button></li>
+        <li><button class="makeNotBold demo">7</button></li>
+        <li><button class="makeNotBold demo">8</button></li>
+        <li><button class="makeNotBold demo">9</button></li>
+        <li><button class="makeNotBold demo">10</button></li>
+        <li><button class="makeNotBold demo">11</button></li>
+        <li><button class="makeNotBold demo">12</button></li>
+        <li><button class="makeNotBold demo">13</button></li>
+        <li><button class="makeNotBold demo">14</button></li>
+        <li><button class="makeNotBold demo">15</button></li>
+        <li><button class="makeNotBold demo">16</button></li>
+        <li><button class="makeNotBold demo">17</button></li>
+        <li><button class="makeNotBold demo">18</button></li>
+        <li><button class="makeNotBold demo">19</button></li>
+        <li><button class="makeNotBold demo">20</button></li>
+        <li><button class="makeNotBold demo">21</button></li>
+        <li><button class="makeNotBold demo">22</button></li>
+        <li><button class="makeNotBold demo">23</button></li>
+        <li><button class="makeNotBold demo">24</button></li>
+        <li><button class="makeNotBold demo">25</button></li>
+        <li><button class="makeNotBold demo">26</button></li>
+        <li><button class="makeNotBold demo">27</button></li>
+        <li><button class="makeNotBold demo">28</button></li>
+        <li><button class="makeNotBold demo">29</button></li>
+        <li><button class="makeNotBold demo">30</button></li>
+        <li><button class="makeNotBold demo">31</button></li>
+    </ul>
+
+
+    <p>day selected = square on date</p>
+    <p>appointments full = red</p>
+    <p>appointments available (<=5) = yellow/orange</p>
+    <p>appointments available (>5) = green</p>
+    <p>day unavailable = dark grey</p>
+
+    <div class="visible">
+    <div class="form-check">
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>empty</th>
+                        <th><span th:text="${#calendars.format(today,'dd MMMM yyyy')}">13 May 2011</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <ul>
+                            <li th:text="${item.description}" th:each="item : ${items}">Item description here...</li>
+                        </ul>
+                    </td>
+                <td>empty</td>
+                <td>
+                    <label class="form-check-label" for="flexRadioDefault800">8:00</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault800"><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault830">
+                    <label class="form-check-label" for="flexRadioDefault830">8:30</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault900">
+                    <label class="form-check-label" for="flexRadioDefault900">9:00</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault930">
+                    <label class="form-check-label" for="flexRadioDefault930">9:30</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1000">
+                    <label class="form-check-label" for="flexRadioDefault1000">10:00</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1030">
+                    <label class="form-check-label" for="flexRadioDefault1030">10:30</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1100">
+                    <label class="form-check-label" for="flexRadioDefault1100">11:00</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1130">
+                    <label class="form-check-label" for="flexRadioDefault1130">11:30</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1200">
+                    <label class="form-check-label" for="flexRadioDefault1200">12:00</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1230">
+                    <label class="form-check-label" for="flexRadioDefault1230">12:30</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1300">
+                    <label class="form-check-label" for="flexRadioDefault1300">13:00</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1330">
+                    <label class="form-check-label" for="flexRadioDefault1330">13:30</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1400">
+                    <label class="form-check-label" for="flexRadioDefault1400">14:00</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1430">
+                    <label class="form-check-label" for="flexRadioDefault1430">14:30</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1500">
+                    <label class="form-check-label" for="flexRadioDefault1500">15:00</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1530">
+                    <label class="form-check-label" for="flexRadioDefault1530">15:30</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1600">
+                    <label class="form-check-label" for="flexRadioDefault1600">16:00</label><br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1630">
+                    <label class="form-check-label" for="flexRadioDefault1630">16:30</label>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    </div>
+</main>
+</body>
+</html>
+

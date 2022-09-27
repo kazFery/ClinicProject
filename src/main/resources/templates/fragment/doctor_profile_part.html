@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+    <div class="form-group mb-3" th:fragment="specialization">
+        <label class="col-sm-4 col-form-label">Specialization: </label>
+        <select name="gender" id="Specialization" class="col-sm-2 form-select  w-auto">
+            <option th:each="specialOpt : ${T(com.medical.clinic.entity.Specialization).values()}"
+                    th:value="${specialOpt}" th:text="${specialOpt }"></option>
+        </select>
+    </div>
+
+</body>
+</html>

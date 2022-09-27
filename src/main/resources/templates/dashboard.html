@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Profile</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+    <body>
+        <header>
+            <div th:fragment="header" class="text-center" >
+                <img src="/static/images/annual-exam-banner.jpg" width="100%" alt="picture of a pen, stethoscope and a calendar" />
+            </div>
+        </header>
+        <!-- Sidebar navigation for ADMIN (same on every admin page) -->
+
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" id="admin-sidebar" style="width: 280px;">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+                    <span class="fs-4">Admin</span></a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>Home</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>Dashboard</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>See Schedule</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>Employee Management</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>Patient Management</a></li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUserA" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Profile Picture -->
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>mdo</strong></a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUserA">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        <!-- Sidebar navigation for DOCTOR (same on every doctor page) -->
+
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" id="doctor-sidebar" style="width: 280px;">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+                    <span class="fs-4">Doctor</span></a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>Home</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>Dashboard</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>See Schedule</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>Manage Schedule</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>Patient Management</a></li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUserD" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Profile Picture -->
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>mdo</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUserD">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        <!-- Sidebar navigation for PATIENT (same on every patient page) -->
+
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" id="patient-sidebar" style="width: 280px;">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+                    <span class="fs-4">Patient</span></a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>Home</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>Dashboard</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>Appointments</a></li>
+                    <li><a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>Member Status</a></li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUserP" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Profile Picture -->
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>mdo</strong></a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUserP">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        <main class="d-flex flex-column">
+            <!-- div th:replace="fragments :: patient" th:if="${PATIENT}" -->
+
+            <div class="container d-flex justify-content-end">
+                <section class="container-md float-start m-3 w-auto" sec:id="employee-management">
+                    <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+                        <div class="container">
+                            <h4><a th:href="@{/patient/account}">Something Goes Here</a></h4>
+                            <p>Left section</p>
+                            <p>This is</p>
+                            <p>just</p>
+                            <p>filler</p>
+                            <p>:)</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="container-md float m-3 w-auto" sec:id="employee-management">
+                    <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+                        <div class="container ">
+                            <h4><a th:href="@{/patient/account}">Something Goes Here</a></h4>
+                            <p>Middle section</p>
+                            <p>This is</p>
+                            <p>just</p>
+                            <p>filler</p>
+                            <p>:)</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="container-md float-end m-3 w-auto" sec:id="employee-management">
+                    <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+                        <div class="container">
+                            <h4><a th:href="@{/patient/account}">Something Goes Here</a></h4>
+                            <p>Right section</p>
+                            <p>This is</p>
+                            <p>just</p>
+                            <p>filler</p>
+                            <p>:)</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="container border border-primary w-25" sec:authorize="hasRole('ROLE_ADMIN')">
+                <h5>Admin Dashboard</h5>
+                <div>
+            <a th:href="@{/admin/list_doctors}">Doctors</a>
+        </div>
+                <div>
+            <a th:href="@{/admin/list_patients}">Patients</a>
+        </div>
+
+                <div>
+            <a th:href="@{/admin/outstanding-fees}">Outstanding fees</a>
+        </div>
+                <div th:if="${showDoctor} == true">
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <nav sec:authorize="isAuthenticated()" th:replace="fragment/list_doctors :: list_doctors"></nav>
+            </div>
+        </div>
+                <div th:if="${showPatient} == true">
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <nav sec:authorize="isAuthenticated()" th:replace="fragment/list_patients :: list_patients"></nav>
+            </div>
+        </div>
+            </div>
+            <div class="container border border-primary w-25" sec:authorize="hasRole('ROLE_DOCTOR')">
+                <h5>Doctor Dashboard</h5>
+                <div>
+                    <a th:href="@{/doctor/schedule}">Schedule</a>
+                </div>
+                <div>
+                    <a th:href="@{/doctor/patients}">Patients</a>
+                </div>
+                <div>
+                    <a th:href="@{/doctor/patient_notes}">Add Patient notes</a>
+                </div>
+            </div>
+            <div class="container border border-primary w-25" sec:authorize="hasRole('ROLE_PATIENT')">
+        <!-- div th:replace="fragments :: patient" th:if="${PATIENT}" -->
+                <h5>Patient Dashboard</h5>
+
+                <div>
+                    <a th:href="@{/patient/account}">My account</a>
+                </div>
+                <div>
+                    <a th:href="@{/patient/appointments}">My appointments</a>
+                </div>
+                <div>
+                    <a th:href="@{/patient/schedule-appointment}">Schedule appointment</a>
+                </div>
+                <div>
+                    <a th:href="@{/patient/change-appointment}">Change appointment</a>
+                </div>
+                <div>
+                    <a th:href="@{/patient/cancel-appointment}">Cancel appointment</a>
+                </div>
+                <div>
+                    <a th:href="@{/patient/outstanding-fees}">Outstanding fees</a>
+                </div>
+            </div>
+        </main>
+        <!-- FOOTER (same on every page) -->
+        <footer class="text-center p-4 bg-dark text-light">
+            <figure class="text-center">
+                <blockquote class="blockquote">
+                    <q>Stay happy and healthy.</q>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                    Mikhail Varshavski, D.O., AKA: "Doctor Mike" on <cite title="Youtube">Youtube</cite>
+                </figcaption>
+            </figure>
+        </footer>
+    </body>
+</html>

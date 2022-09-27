@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+    <link rel="stylesheet" type="text/css" href="main/resources/static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <style>
+        .element {
+            @include clearfix;
+        }
+    </style>
+</head>
+<body class="container d-flex flex-column vh-100">
+<header>
+    <img src="/images/annual-exam-banner.jpg" width="100%" alt="picture of a pen, stethoscope and a calendar" />
+</header>
+<main>
+    <div class="container clearfix p-0">
+        <!-- Sidebar -->
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" id="admin-sidebar" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+                <span class="fs-4">Admin</span></a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <!-- Home : to index.html -->
+
+                <li class="nav-item"><a th:href="@{/index}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use href="@{/admin/list_doctors}"/></svg>Home</a></li>
+
+                <!-- Dashboard: to admin-dashboard.html -->
+
+                <li class="nav-item"><a th:href="@{/adminDashboard}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use href="#speedometer2"/></svg>Dashboard</a></li>
+
+                <!-- See Schedule: to [] -->
+
+                <li class="nav-item"><a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use href="#table"/></svg>See Schedule</a></li>
+
+                <!-- Employee Management: to list_doctors.html -->
+
+                <li class="nav-item"><a th:href="@{/admin/list_doctors}" class="nav-link active text-white" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use href="@{/admin/list_doctors}"/></svg>Employee Management</a></li>
+
+                <!-- Patient Management: to list_patients.html -->
+
+                <li class="nav-item"><a th:href="@{/admin/list_patients}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use href="@{/admin/list_patients}"/></svg>Patient Management</a></li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUserA" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- Profile Picture -->
+                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>mdo</strong></a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUserA">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/logout}">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- other -->
+<div class="container text-center">
+    <div>
+        <h1>Doctor's Registration</h1>
+    </div>
+    <form th:action="@{/process_register}" th:object="${clinicUser}"
+          method="post" style="max-width: 600px; margin: 0 auto;"  modelAttribute="clinicUser">
+
+        <div class="m-3">
+            <div class="form-group row mb-4">
+                <label class="col-4 col-form-label">User Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{username}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"  class="alert alert-danger" >error</div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-4 col-form-label">E-mail: </label>
+                <div class="col-8">
+                    <input type="email" th:field="*{email}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class="alert alert-danger" >error</div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-4 col-form-label">Password: </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{password}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"  class="alert alert-danger" >error</div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-4 col-form-label">Password (repeat): </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{passwordRepeat}" class="form-control"/>
+                </div>
+
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-sm-4 col-form-label">FirstName: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{firstname}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"  class="alert alert-danger" >error</div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-sm-4 col-form-label">LastName: </label>
+                <div class="col-8 ">
+                    <input type="text" th:field="*{lastname}" class="form-control "/>
+                    <div th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"  class="alert alert-danger" >error</div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-sm-4 col-form-label">Phone Number: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{phoneNo}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('phoneNo')}" th:errors="*{phoneNo}"  class="alert alert-danger" >error</div>
+                </div>
+            </div>
+            <div class="form-group row mb-4 ">
+                <label class="col-sm-4 col-form-label">Date of Birth: </label>
+                <div class="col-8">
+                    <input type="date" th:field="*{DOB}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('DOB')}" th:errors="*{DOB}"  class="alert alert-danger" >error</div>
+                </div>
+
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-sm-4 col-form-label">gender: </label>
+                <select name="gender" id="gender" class="col-sm-2 form-select  w-auto">
+                    <option th:each="genderOpt : ${T(com.medical.clinic.entity.ClinicUser.Sex).values()}"
+                            th:value="${genderOpt}" th:text="${genderOpt }"></option>
+                </select>
+
+            </div>
+            <div th:replace="fragment/doctor_profile_part :: specialization"></div>
+
+            <input type="hidden" th:field="*{role}" class="form-control"/>
+            <input type="hidden" th:field="*{id}" class="form-control"/>
+            <div><button type="submit" class="btn btn-primary"> Submit</button></div>
+        </div>
+    </form>
+</div>
+    </div>
+</main>
+
+</body>
+</html>

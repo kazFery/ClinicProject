@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="main/resources/static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <style>
+        .element {
+            @include clearfix;
+        }
+    </style>
+</head>
+<body class="container d-flex flex-column vh-100">
+<header>
+    <img src="/images/annual-exam-banner.jpg" width="100%" alt="picture of a pen, stethoscope and a calendar" />
+</header>
+<main>
+    <div class="container clearfix p-0">
+        <!-- Sidebar -->
+        <div class="d-flex flex-column flex-shrink-0 vh-100 p-3 text-white bg-dark float-start" id="patient-sidebar" style="width: 280px;">
+            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use href="#"/></svg>
+                <span class="fs-4">Patient</span></a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <!-- Home : to index.html -->
+
+                <li class="nav-item"><a th:href="@{/index}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use th:href="@{/admin/list_doctors}"/></svg>Home</a></li>
+
+                <!-- Dashboard: to admin-dashboard.html -->
+
+                <li class="nav-item"><a th:href="@{/patientDashboard}" class="nav-link active text-white" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use th:href="@{/patientDashboard}"/></svg>Dashboard</a></li>
+
+                <!-- Appointments: to fragments.html -->
+
+                <li><a th:href="@{/patient/appointments}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use th:href="@{/patient/appointments}"/></svg>Appointments</a></li>
+
+                <!-- Member Status: to member-status.html -->
+
+                <li><a th:href="@{/member-status}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use th:href="@{/member-status}"/></svg>Member Status</a></li>
+
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUserP" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- Profile Picture -->
+                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>mdo</strong></a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUserP">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+        <!-- FOOTER (same on every page) -->
+        <footer class="text-center p-4 bg-dark text-light">
+            <figure class="text-center">
+                <blockquote class="blockquote">
+                    <q>Stay happy and healthy.</q>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                    Mikhail Varshavski, D.O., AKA: "Doctor Mike" on <cite title="Youtube">Youtube</cite>
+                </figcaption>
+            </figure>
+        </footer>
+</body>
+</html>
